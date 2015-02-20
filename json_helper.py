@@ -69,7 +69,7 @@ def getConfig():
 			      u"commitID" : repos_commitID
 			  	}
 
-	build_hostname = "sampleHost"
+	build_hostname = "machine3"
 	build_OS = "sampleOS"
 	build_compiler = "sampleCompiler"
 	build_cpu = "sampleCPU"
