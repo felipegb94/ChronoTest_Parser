@@ -69,14 +69,11 @@ def getConfig():
 			      u"commitID" : repos_commitID
 			  	}
 
-	build_hostname = "machine1"
-	build_OS = "sampleOS"
-	build_compiler = "sampleCompiler"
-	build_cpu = "sampleCPU"
+	build_hostname = "hostname1"
+	build_builder = "SampleBuilder2"
+
 	build_info = {u"hostname" : build_hostname,
-				  u"OS" : build_OS,
-				  u"compiler" : build_compiler,
-				  u"cpu" : build_cpu
+				  u"builder" : build_builder
 			  	}
 
 
