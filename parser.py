@@ -1,5 +1,5 @@
 import os, json, requests, sys
-import json_helper
+import parser_helper
 from config import PATH
 from requests.auth import HTTPBasicAuth
 
@@ -13,14 +13,14 @@ if (len(args) == 3):
 	commit_id = args[2]	
 
 # Gets output template. This will include build information if it is given
-json_tests = json_helper.getJsonTemplate(builder, commit_id)
+json_tests = parser_helper.getJsonTemplate(builder, commit_id)
 
 os.chdir("json")
 
 # Step through the directory with the output json files
 for root, dirs, files in os.walk('.'):
 	for jsonFile in files:
-		test = json_helper.openJSON(jsonFile)
+		test = parser_helper.openJSON(jsonFile)
 		json_tests["tests"].append(test) 
 
 # Get username and pw for authentication
