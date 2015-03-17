@@ -38,3 +38,4 @@ r = requests.post(url, data=json.dumps(json_tests), headers=headers,
 
 # Print the status
 print "Request status = " + str(r.status_code)
+print r.text
