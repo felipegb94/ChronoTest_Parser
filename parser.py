@@ -1,6 +1,6 @@
 import os, json, requests, sys
 import parser_helper
-from config import PATH
+import config
 from requests.auth import HTTPBasicAuth
 
 args = sys.argv
@@ -15,7 +15,7 @@ if (len(args) == 3):
 # Gets output template. This will include build information if it is given
 json_tests = parser_helper.getJsonTemplate(builder, commit_id)
 
-os.chdir("json")
+os.chdir(config.RESULTS_PATH)
 
 # Step through the directory with the output json files
 for root, dirs, files in os.walk('.'):
@@ -24,12 +24,13 @@ for root, dirs, files in os.walk('.'):
 		json_tests["tests"].append(test) 
 
 # Get username and pw for authentication
-json_data = open(PATH,'r')
+json_data = open(config.PATH,'r')
 data = json.load(json_data)
 json_data.close()
 
 headers = {'content-type': 'application/json'}
-url = "http://localhost:5000/chrono_test/api/tests"
+url = config.URL
+
 
 # Send post request
 r = requests.post(url, data=json.dumps(json_tests), headers=headers, 

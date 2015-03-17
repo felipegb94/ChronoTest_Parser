@@ -35,8 +35,6 @@ def validateJSON(data):
 		if(not key in data):
 			raise Exception("Invalid JSON format: Make sure your JSON file contains required fields. ")
 
-	print "Valid JSON."
-
 '''
 Returns the template to fill with tests. The template comes with the build
 information of the current machine.
@@ -56,8 +54,12 @@ Returns the config information for the template
 '''
 def getConfig(builder = None, commit_id = None):
 
-	repos_commitID = builder
-	build_builder = commit_id
+	repos_commitID = commit_id
+
+	if(builder == None):
+		build_builder = socket.gethostname()
+	else:
+		build_builder = builder
 
 	# Get hostname
 	build_hostname = socket.gethostname()
